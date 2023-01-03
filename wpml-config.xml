@@ -1,0 +1,183 @@
+<wpml-config>
+    <custom-fields>
+        <custom-field action="copy">ale_order_form</custom-field>
+        <custom-field action="copy">ale_services_box</custom-field>
+        <custom-field action="copy">ale_partners_box</custom-field>
+        <custom-field action="copy">ale_testimonials_box</custom-field>
+        <custom-field action="copy">ale_portfolio_box</custom-field>
+        <custom-field action="translate">ale_order_box_title</custom-field>
+        <custom-field action="translate">ale_gardeners_title</custom-field>
+        <custom-field action="translate">ale_order_box_gardener_subtitle</custom-field>
+        <custom-field action="translate">ale_l_projects_title</custom-field>
+        <custom-field action="translate">ale_l_projects_link_title</custom-field>
+        <custom-field action="translate">ale_partners_title</custom-field>
+        <custom-field action="translate">ale_partners_bg</custom-field>
+        <custom-field action="copy">ale_additional_info</custom-field>
+        <custom-field action="copy">ale_skills_info</custom-field>
+        <custom-field action="copy">ale_video_info</custom-field>
+        <custom-field action="translate">ale_partners_title</custom-field>
+        <custom-field action="translate">ale_author_subtitle</custom-field>
+        <custom-field action="translate">ale_author_photo</custom-field>
+        <custom-field action="translate">ale_author_name</custom-field>
+        <custom-field action="translate">ale_author_position</custom-field>
+        <custom-field action="translate">ale_info_title</custom-field>
+        <custom-field action="copy">ale_info_photo_one</custom-field>
+        <custom-field action="copy">ale_info_photo_two</custom-field>
+        <custom-field action="translate">ale_info_description</custom-field>
+        <custom-field action="copy">ale_info_icon_1</custom-field>
+        <custom-field action="translate">ale_skills_title_1</custom-field>
+        <custom-field action="translate">ale_skills_description_1</custom-field>
+        <custom-field action="copy">ale_info_icon_2</custom-field>
+        <custom-field action="translate">ale_skills_title_2</custom-field>
+        <custom-field action="translate">ale_skills_description_2</custom-field>
+        <custom-field action="copy">ale_info_icon_3</custom-field>
+        <custom-field action="translate">ale_skills_title_3</custom-field>
+        <custom-field action="translate">ale_skills_description_3</custom-field>
+        <custom-field action="copy">ale_video_photo</custom-field>
+        <custom-field action="translate">ale_video_link</custom-field>
+        <custom-field action="translate">ale_video_title</custom-field>
+        <custom-field action="translate">ale_video_description</custom-field>
+        <custom-field action="translate">ale_phono_label</custom-field>
+        <custom-field action="translate">ale_phone_number</custom-field>
+        <custom-field action="translate">ale_email_label</custom-field>
+        <custom-field action="copy">ale_your_email</custom-field>
+        <custom-field action="translate">ale_address_label</custom-field>
+        <custom-field action="translate">ale_your_address</custom-field>
+        <custom-field action="translate">ale_contact_title</custom-field>
+        <custom-field action="translate">ale_contact_description</custom-field>
+        <custom-field action="translate">ale_post_sub_title</custom-field>
+        <custom-field action="copy">ale_post_to_slider</custom-field>
+        <custom-field action="copy">ale_main_image</custom-field>
+        <custom-field action="copy">ale_background_image</custom-field>
+        <custom-field action="translate">ale_gardener_post</custom-field>
+        <custom-field action="translate">ale_gardener_title</custom-field>
+        <custom-field action="copy">ale_gardener_staff</custom-field>
+        <custom-field action="copy">ale_gardener_fb</custom-field>
+        <custom-field action="copy">ale_gardener_twi</custom-field>
+        <custom-field action="copy">ale_gardener_email</custom-field>
+        <custom-field action="copy">ale_service_icon</custom-field>
+        <custom-field action="copy">ale_service_icon_hover</custom-field>
+        <custom-field action="copy">ale_service_bigicon</custom-field>
+        <custom-field action="copy">ale_service_bigicon_hover</custom-field>
+        <custom-field action="copy">ale_service_description_image</custom-field>
+        <custom-field action="translate">ale_service_subtitle</custom-field>
+        <custom-field action="translate">ale_service_link_one</custom-field>
+        <custom-field action="translate">ale_service_label_one</custom-field>
+        <custom-field action="translate">ale_service_link_two</custom-field>
+        <custom-field action="translate">ale_service_label_two</custom-field>
+        <custom-field action="translate">ale_service_link_three</custom-field>
+        <custom-field action="translate">ale_service_label_three</custom-field>
+        <custom-field action="translate">ale_service_price</custom-field>
+        <custom-field action="translate">ale_service_currency</custom-field>
+        <custom-field action="translate">ale_service_price_type</custom-field>
+        <custom-field action="translate">ale_partner_subtitle</custom-field>
+        <custom-field action="translate">ale_partner_site</custom-field>
+        <custom-field action="translate">ale_partner_link</custom-field>
+        <custom-field action="translate">ale_testy_position</custom-field>
+        <custom-field action="translate">ale_testy_subtitle</custom-field>
+        <custom-field action="copy">ale_testy_rating</custom-field>
+        <custom-field action="translate">ale_project_subtitle</custom-field>
+        <custom-field action="translate">ale_project_company</custom-field>
+        <custom-field action="translate">ale_project_date</custom-field>
+    </custom-fields>
+    <custom-types>
+        <custom-type translate="1">projects</custom-type>
+        <custom-type translate="1">gardeners</custom-type>
+        <custom-type translate="1">services</custom-type>
+        <custom-type translate="1">partners</custom-type>
+        <custom-type translate="1">testimonials</custom-type>
+    </custom-types>
+    <taxonomies>
+        <taxonomy translate="1">projects-category</taxonomy>
+    </taxonomies>
+    <admin-texts>
+        <key name="gardener">
+            <key name="ale_sitelogo" />
+            <key name="ale_footerlogo" />
+            <key name="ale_favicon" />
+            <key name="ale_header_phone_label" />
+            <key name="ale_header_phone" />
+            <key name="ale_footer_callnumber" />
+            <key name="ale_footer_email_address" />
+            <key name="ale_footer_address" />
+            <key name="ale_copyrights" />
+            <key name="ale_background">
+                <key name="color" />
+                <key name="image" />
+                <key name="repeat" />
+                <key name="position" />
+                <key name="attachment" />
+            </key>
+            <key name="ale_font_one" />
+            <key name="ale_font_one_ex" />
+            <key name="ale_font_two" />
+            <key name="ale_font_two_ex" />
+            <key name="ale_h1sty">
+                <key name="size" />
+                <key name="face" />
+                <key name="style" />
+                <key name="transform" />
+                <key name="color" />
+            </key>
+            <key name="ale_h2sty">
+                <key name="size" />
+                <key name="face" />
+                <key name="style" />
+                <key name="transform" />
+                <key name="color" />
+            </key>
+            <key name="ale_h3sty">
+                <key name="size" />
+                <key name="face" />
+                <key name="style" />
+                <key name="transform" />
+                <key name="color" />
+            </key>
+            <key name="ale_h4sty">
+                <key name="size" />
+                <key name="face" />
+                <key name="style" />
+                <key name="transform" />
+                <key name="color" />
+            </key>
+            <key name="ale_h5sty">
+                <key name="size" />
+                <key name="face" />
+                <key name="style" />
+                <key name="transform" />
+                <key name="color" />
+            </key>
+            <key name="ale_h6sty">
+                <key name="size" />
+                <key name="face" />
+                <key name="style" />
+                <key name="transform" />
+                <key name="color" />
+            </key>
+            <key name="ale_bodystyle">
+                <key name="size" />
+                <key name="face" />
+                <key name="style" />
+                <key name="transform" />
+                <key name="color" />
+            </key>
+            <key name="ale_twi" />
+            <key name="ale_fb" />
+            <key name="ale_you" />
+            <key name="ale_lin" />
+            <key name="ale_pin" />
+            <key name="ale_gpl" />
+            <key name="ale_tum" />
+            <key name="ale_insta" />
+            <key name="ale_red" />
+            <key name="ale_vk" />
+            <key name="ale_fb_id" />
+            <key name="ale_og_enabled" />
+            <key name="ale_footer_info" />
+            <key name="ale_customcsscode" />
+            <key name="ale_maps_api_key" />
+            <key name="ale_map_icon" />
+            <key name="ale_maps_style" />
+        </key>
+    </admin-texts>
+</wpml-config>
