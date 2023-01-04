@@ -1,4 +1,9 @@
 <?php
+/** ############################################################################
+ *  Подгрузка файлов для 'ФРОНТЕНДА'
+ *  СТИЛЕЙ; СКРИПТОВ; ШРИФТОВ;
+ ** ########################################################################### */
+
 /**
  * Enqueue Theme Styles
  */
@@ -8,6 +13,7 @@ function ale_enqueue_styles() {
 	//wp_register_style( 'aletheme-preloader', ALETHEME_THEME_URL . '/css/libs/preloader.css', array(), ALETHEME_THEME_VERSION, 'all');
 
 	//Add general css files
+	// ### Регистрация CSS ###
 	wp_register_style( 'aletheme-general-css', ALETHEME_THEME_URL . '/css/general.css', array(), ALETHEME_THEME_VERSION, 'all');
 	wp_register_style( 'aletheme-shortcodes-css', ALETHEME_THEME_URL . '/css/shortcodes.css', array(), ALETHEME_THEME_VERSION, 'all');
 
@@ -22,6 +28,7 @@ function ale_enqueue_styles() {
 	}*/
 
 	//Load general css
+	// ### Вызов CSS ###
 	wp_enqueue_style('aletheme-general-css');
 	wp_enqueue_style('aletheme-shortcodes-css');
 
@@ -40,6 +47,7 @@ add_action( 'wp_enqueue_scripts', 'ale_enqueue_styles' );
 function ale_enqueue_scripts() {
 
 	// add html5 for old browsers.
+	// ### Регистрация JS ###
 	wp_register_script( 'html5-shim', 'http://html5shim.googlecode.com/svn/trunk/html5.js', array( 'jquery' ), ALETHEME_THEME_VERSION, false );
 
     wp_register_script( 'lightbox', ALETHEME_THEME_URL . '/js/libs/lightbox.min.js', array( 'jquery' ), ALETHEME_THEME_VERSION, true );
@@ -51,9 +59,10 @@ function ale_enqueue_scripts() {
 	//Custom JS Code
 	wp_register_script( 'ale-scripts', ALETHEME_THEME_URL . '/js/scripts.js', array( 'jquery' ), ALETHEME_THEME_VERSION, true );
 
-
-	wp_enqueue_script( 'jquery-form' );
+    // ### Вызов CSS ###
+	wp_enqueue_script( 'jquery-form' ); // ! WP функ. следует вызывать на страницах для добавления коментариев.
 	wp_enqueue_script( 'html5-shim' );
+	// ### УСЛОВИЕ выполнения (отработать скрипту IE в случае версии менее 9 ) ###
 	wp_script_add_data( 'html5-shim', 'conditional', 'lt IE 9' );
 
 
@@ -61,7 +70,7 @@ function ale_enqueue_scripts() {
 
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-        wp_enqueue_script( 'comment-reply' );
+        wp_enqueue_script( 'comment-reply' ); // ! WP функ. Динамическая опция ответа в коментариях.
     }
 
 	if(is_page_template('template-homepage.php')){
@@ -85,16 +94,26 @@ add_action( 'wp_enqueue_scripts', 'ale_enqueue_scripts');
 /**
  * Register Fonts
  */
+
+/**
+ *  #### Шрифты Google ####
+ * ( Берём из админки. Админка -> Appearance -> Theme Option -> Typography).
+ * ( По умолчанию ОПЦИИ ТЕМЫ задаются в ../themes/gardener/aletheme/config.php )
+ *
+ *  !!! Эта функция подгрузки шрифта - требование Envato !!!
+ *  ( WP получает возможность отслеживать и не грузить дважды. )
+*/
+
 function ale_google_fonts_url() {
 	$font_url = '';
 
 	/* Get fonts names selected by administrator in theme options */
 
-	$ale_font_one = ale_get_option('font_one');
-	$ale_font_two = ale_get_option('font_two');
+	$ale_font_one = ale_get_option('font_one'); // Шрифт №1
+	$ale_font_two = ale_get_option('font_two'); // Шрифт №2
 
-	$ale_font_one_ex = ale_get_option('font_one_ex');
-	$ale_font_two_ex = ale_get_option('font_two_ex');
+	$ale_font_one_ex = ale_get_option('font_one_ex'); // Шрифт №1
+	$ale_font_two_ex = ale_get_option('font_two_ex'); // Шрифт №2
 
 
 	$ale_default_fonts = ale_get_safe_webfonts();

@@ -1,4 +1,14 @@
 <?php
+/** ############################################################################
+ *  TGM Скрипт ПРЕДЛАГАЕТ/УСТАНАВЛИВАЕТ плагины.
+ *
+ * 	../themes/gardener/aletheme/functions/tgm.php - TGM Скрипт ПРЕДЛАГАЕТ/УСТАНАВЛИВАЕТ плагины
+ *  ../themes/gardener/aletheme/functions/general.php  - Массив передаваемых данных.
+ *
+ ** ########################################################################### */
+
+
+
 /**
  * Plugin installation and activation for WordPress themes.
  *

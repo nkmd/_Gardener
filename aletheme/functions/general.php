@@ -209,6 +209,8 @@ function ale_get_random_number() {
 }
 
 /**
+ * #### GOOGLE FONTS ####
+ *
  * Retreive Google Fonts List.
  * 
  * @return array 
@@ -1412,6 +1414,11 @@ function ale_get_breadcrumbs() {
 }
 
 
+/** ############################################################################
+ *  TGM - Скрипт ПРЕДЛАГАЕТ/УСТАНАВЛИВАЕТ плагины -
+ *  массив передаваемых данных в '../themes/gardener/aletheme/functions/tgm.php'
+ ** ########################################################################### */
+
 // TGM Script code
 
 /**
@@ -1422,7 +1429,6 @@ function ale_load_textdomain() {
         load_theme_textdomain( 'tgmpa', get_template_directory() . '/lang/tgm' );
 }
 add_action( 'init', 'ale_load_textdomain', 1 );
-
 
 
 /**
@@ -1437,7 +1443,6 @@ function ale_register_required_plugins() {
          * If the source is NOT from the .org repo, then source is also required.
          */
         $plugins = array(
-
 
 
             array(
