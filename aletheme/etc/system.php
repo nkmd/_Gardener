@@ -1,4 +1,9 @@
 <?php
+/** ############################################################################
+ *  ИНИЦИАЛИЗАЦИЯ ВОЗМОЖНОСТЕЙ ТЕМЫ
+ *
+ *  Меню области,
+ ** ########################################################################### */
 
 /**
  * Initialize Theme Support Features 
@@ -29,6 +34,7 @@ function ale_after_setup_theme() {
 add_action('after_setup_theme', 'ale_after_setup_theme');
 
 /**
+ * ##### Инициализация (возможности) Навигации в теме в указанных областях #####
  * Initialize Theme Navigation 
  */
 function ale_init_navigation() {

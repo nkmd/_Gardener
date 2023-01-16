@@ -57,7 +57,8 @@ jQuery(document).ready(function ($) {
 		$('#' + formfield + '_id').val("");
 	});
 
-	$('.ale_upload_button').live('click', function () {
+	//$('.ale_upload_button').live('click', function () {
+	$('.ale_upload_button').on('click', function () {
 		var buttonLabel;
 		formfield = $(this).prev('input').attr('name');
 		buttonLabel = 'Use as ' + $('label[for=' + formfield + ']').text();
@@ -65,7 +66,8 @@ jQuery(document).ready(function ($) {
 		return false;
 	});
 
-	$('.ale_remove_file_button').live('click', function () {
+	//$('.ale_remove_file_button').live('click', function () {
+	$('.ale_remove_file_button').on('click', function () {
 		formfield = $(this).attr('rel');
 		$('input#' + formfield).val('');
 		$('input#' + formfield + '_id').val('');

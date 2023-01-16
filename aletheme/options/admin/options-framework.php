@@ -1,4 +1,11 @@
 <?php
+/** ############################################################################
+ *  ОПЦИИ ТЕМЫ - СТРАНИЦА В АДМИНКЕ
+ *
+ *  Фреймворк для создания опций темы.
+ *  ( некий 'ададон' для Redux ? )
+ ** ########################################################################### */
+
 /*
 Description: A framework for building theme options.
 Author: Devin Price
@@ -35,12 +42,17 @@ if ( !function_exists( 'add_action' ) ) {
 add_action('init', 'optionsframework_rolescheck' );
 
 function optionsframework_rolescheck () {
-	if ( current_user_can( 'edit_theme_options' ) ) {
-		add_action( 'admin_init', 'optionsframework_init' );
-		if(function_exists('optionsframework_mlu_init')){
-			add_action( 'admin_init', 'optionsframework_mlu_init' );
-		}
-	}
+//	if ( current_user_can( 'edit_theme_options' ) ) {
+//		add_action( 'admin_init', 'optionsframework_init' );
+//		if(function_exists('optionsframework_mlu_init')){
+//			add_action( 'admin_init', 'optionsframework_mlu_init' );
+//		}
+//	}
+
+    if ( current_user_can( 'edit_theme_options' ) ) {
+        add_action( 'admin_init', 'optionsframework_init' );
+        add_action( 'admin_init', 'optionsframework_mlu_init' );
+    }
 }
 
 /* Loads the file for option sanitization */

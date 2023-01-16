@@ -1,12 +1,17 @@
 <?php
 /** ############################################################################
- *  ОПЦИИ ТЕМЫ - НАСТРОЙКА  ПО УМОЛЧАНИЮ
- *  ( Шрифты, размеры, заголвки, цвета ).
+ *  "Сердце шаблона" ОПЦИИ ТЕМЫ - НАСТРОЙКА  ПО УМОЛЧАНИЮ
+ *
+ *  Дефолтная настроечная информация для Redux Framework.
+ *  Дефолтные опции для "MetaBox" -ов.
+ *  Размеры картинок для проекта.
+ *  Пост форматы (Standard;Gallery;Link;...)
+ *
  *  ( Админка -> Appearance -> Theme Option ).
  ** ########################################################################### */
 
 /**
- * Get current theme options
+ *  ##### "Redux Framework - options panel" / Get current theme options #####
  * 
  * @return array
  */
@@ -26,22 +31,22 @@ function ale_get_options() {
 
 	$options = array();
 
+	// ### Brand" - раздел Меню ###
     $options[] = array("name" => esc_html__("Brand","gardener"),
-                        "type" => "heading",
+                        "type" => "heading", // ID
                         "icon" => "fa-desktop");
 
     $options[] = array( "name" => esc_html__("Site Logo","gardener"),
                         "desc" => esc_html__("Upload or put the site logo link.","gardener"),
-                        "id" => "ale_sitelogo",
-                        "std" => "",
-                        "type" => "upload");
+                        "id" => "ale_sitelogo", // ID
+                        "std" => "",            // знач. по умолчанию.
+                        "type" => "upload");    // тип поля.
 
     $options[] = array( "name" => esc_html__("Footer Logo","gardener"),
                         "desc" => esc_html__("Upload or put the footer logo link.","gardener"),
                         "id" => "ale_footerlogo",
                         "std" => "",
                         "type" => "upload");
-
 
     $options[] = array( 'name' => esc_html__("Manage Background","gardener"),
                         'desc' => esc_html__("Select the background color, or upload a custom background image. Default background is the #f5f5f5 color","gardener"),
@@ -55,6 +60,8 @@ function ale_get_options() {
                         "std" => "",
                         "type" => "upload");
 
+
+    // ### Header Options" - раздел Меню ###
     $options[] = array("name" => esc_html__("Header Options","gardener"),
                        "type" => "heading",
                        "icon" => "fa-header");
@@ -70,13 +77,12 @@ function ale_get_options() {
                         "id" => "ale_header_phone",
                         "std" => "",
                         "type" => "text");
-		
 
 
+    // ### Footer Options" - раздел Меню ###
     $options[] = array("name" => esc_html__("Footer Options","gardener"),
                         "type" => "heading",
                         "icon" => "fa-copyright");
-
 
     $options[] = array( "name" => esc_html__("Footer Call Number","gardener"),
                         "desc" => esc_html__("Insert the call number","gardener"),
@@ -103,7 +109,7 @@ function ale_get_options() {
                         "type" => "editor");
 
 
-
+    // ### "Typography" - раздел Меню ###
     $options[] = array( "name" => esc_html__("Typography","gardener"),
                         "type" => "heading",
                         "icon" => "fa-font");
@@ -178,6 +184,7 @@ function ale_get_options() {
                         'std' => array('size' => '14px','face' => 'Arial','style' => 'normal','transform'=>'none', 'weight'=>'400','lineheight'=>'24px','color' => '#434343'),
                         'type' => 'typography');
 
+    // ### "Social Profiles & Share" - раздел Меню ###
 	$options[] = array( "name" => esc_html__("Social Profiles & Share","gardener"),
 						"type" => "heading",
                         "icon" => "fa-address-book");
@@ -242,7 +249,6 @@ function ale_get_options() {
                         "std" => "",
                         "type" => "text");
 
-	
 	$options[] = array( "name" => esc_html__("Facebook Application ID","gardener"),
 						"desc" => esc_html__("If you have Application ID you can connect the blog to your Facebook Profile and monitor statistics there.","gardener"),
 						"id" => "ale_fb_id",
@@ -256,7 +262,7 @@ function ale_get_options() {
 						"type" => "checkbox");
 
 
-	
+    // ### "Advanced Settings" - раздел Меню ###
 	$options[] = array( "name" => esc_html__("Advanced Settings","gardener"),
 						"type" => "heading",
                         "icon" => "fa-cogs");
@@ -274,6 +280,7 @@ function ale_get_options() {
                         "type" => "textarea");
 
 
+    // ### "Google Maps" - раздел Меню ###
     $options[] = array("name" => esc_html__("Google Maps","gardener"),
                        "type" => "heading",
                        "icon" => "fa-map-marker");
@@ -287,7 +294,7 @@ function ale_get_options() {
     $options[] = array( "name" => esc_html__("Custom Pin Icon","gardener"),
                         "desc" => esc_html__("Upload a Custom Pin Icon. Let it empty to use the default icon.","gardener"),
                         "id" => "ale_map_icon",
-                        "std" => get_template_directory_uri()."/css/images/map.png",
+                        "std" => get_template_directory_uri()."/css/images/map.png", // по умолчанию
                         "type" => "upload");
 
     $options[] = array( "name" => esc_html__("Map Custom Style","gardener"),
@@ -297,13 +304,12 @@ function ale_get_options() {
                         "type" => "text");
 
 
-
 	return $options;
 }
 
 
 /**
- * Add Metaboxes
+ * ##### МЕТАБОКСЫ / Add Metaboxes #####
  * @param array $meta_boxes
  * @return array 
  */
@@ -313,28 +319,32 @@ function ale_metaboxes($meta_boxes) {
 
     $prefix = "ale_";
 
+    // ### HOME ###
+    // --- РАЗДЕЛ 'Home Page Settings'
     $meta_boxes[] = array(
-        'id'         => 'home_settings_metabox',
-        'title'      => esc_html__('Home Page Settings','gardener'),
-        'pages'      => array( 'page', ), // Post type
+        'id'         => 'home_settings_metabox', // ID раздела метабоксов
+        'title'      => esc_html__('Home Page Settings','gardener'), // Заголовок поля, "текст домэин" проекта
+        'pages'      => array( 'page', ), // Тип поста где отображать ('page','post','works')
         'context'    => 'normal',
         'priority'   => 'high',
-        'show_on'    => array( 'key' => 'page-template', 'value' => array('template-homepage.php'), ), // Specific post templates to display this metabox
+        'show_on'    => array( 'key' => 'page-template', 'value' => array('template-homepage.php'), ), // Отображать только на данном шаблоне!
         'show_names' => true, // Show field names on the left
         'fields' => array(
 
+            // --- СЕКЦИЯ страницы 'Order Form' (на главной)
             array(
                 'name' => esc_html__('Enable Order Form Box','gardener'),
                 'desc' => esc_html__('Enable or disable the order form on Homepage','gardener'),
-                'id'   => $prefix . 'order_form',
-                'std'  => 'enable',
-                'type'    => 'select',
+                'id'   => $prefix . 'order_form', // ID  метабокса
+                'std'  => 'enable',    // значение по умолчанию
+                'type'    => 'select', // тип метабокса
                 'options' => array(
                     array( 'name' => esc_html__('Enable','gardener'), 'value' => 'enable', ),
                     array( 'name' => esc_html__('Disable','gardener'), 'value' => 'disable', ),
                 ),
             ),
 
+            // --- СЕКЦИЯ страницы 'Services' (на главной)
             array(
                 'name' => esc_html__('Enable Services Box','gardener'),
                 'desc' => esc_html__('Enable or disable the services on Homepage','gardener'),
@@ -347,6 +357,7 @@ function ale_metaboxes($meta_boxes) {
                 ),
             ),
 
+            // --- СЕКЦИЯ страницы 'Partners' (на главной)
             array(
                 'name' => esc_html__('Enable Partners Box','gardener'),
                 'desc' => esc_html__('Enable or disable the Partners on Homepage','gardener'),
@@ -359,6 +370,7 @@ function ale_metaboxes($meta_boxes) {
                 ),
             ),
 
+            // --- СЕКЦИЯ страницы 'Testimonials (Review)' (на главной)
             array(
                 'name' => esc_html__('Enable Testimonials Box','gardener'),
                 'desc' => esc_html__('Enable or disable the Testimonials on Homepage','gardener'),
@@ -370,6 +382,8 @@ function ale_metaboxes($meta_boxes) {
                     array( 'name' => esc_html__('Disable','gardener'), 'value' => 'disable', ),
                 ),
             ),
+
+            // --- СЕКЦИЯ страницы 'Portfolio' (на главной)
             array(
                 'name' => esc_html__('Enable Portfolio Box','gardener'),
                 'desc' => esc_html__('Enable or disable the portfolio on Homepage','gardener'),
@@ -382,6 +396,7 @@ function ale_metaboxes($meta_boxes) {
                 ),
             ),
 
+            // --- ЗАГОЛОВОК секции  'Order Form' (на главной)
             array(
                 'name' => esc_html__('Order Box Custom Title','gardener'),
                 'desc' => esc_html__('Type here the custom title for your order box.','gardener'),
@@ -390,6 +405,7 @@ function ale_metaboxes($meta_boxes) {
                 'type'    => 'text',
             ),
 
+            // --- ЗАГОЛОВОК левой части формы 'Gardeners' (на главной)
             array(
                 'name' => esc_html__('Gardeners Section Title','gardener'),
                 'desc' => esc_html__('Type here the custom title for your gardeners section.','gardener'),
@@ -398,6 +414,7 @@ function ale_metaboxes($meta_boxes) {
                 'type'    => 'text',
             ),
 
+            // --- ПОДЗАГОЛОВОК секции  'Order' (на главной)
             array(
                 'name' => esc_html__('Order Box Gardener Sub Title','gardener'),
                 'desc' => esc_html__('Type here the custom sub title.','gardener'),
@@ -406,6 +423,7 @@ function ale_metaboxes($meta_boxes) {
                 'type'    => 'text',
             ),
 
+            // --- ЗАГОЛОВОК правой части формы 'Gardeners' (на главной)
             array(
                 'name' => esc_html__('Projects Section Title','gardener'),
                 'desc' => esc_html__('Type here the custom title for your projects section.','gardener'),
@@ -414,6 +432,7 @@ function ale_metaboxes($meta_boxes) {
                 'type'    => 'text',
             ),
 
+            // --- ССЫЛКА правой части формы 'Gardeners' (на главной)
             array(
                 'name' => esc_html__('Projects Section Link Title','gardener'),
                 'desc' => esc_html__('Type here the custom title for your projects section link title.','gardener'),
@@ -422,7 +441,7 @@ function ale_metaboxes($meta_boxes) {
                 'type'    => 'text',
             ),
 
-
+            // --- ЗАГОЛОВОК секции 'Partners' (на главной)
             array(
                 'name' => esc_html__('Partners Title','gardener'),
                 'desc' => esc_html__('Type here the custom title for your partners title.','gardener'),
@@ -431,6 +450,7 @@ function ale_metaboxes($meta_boxes) {
                 'type'    => 'text',
             ),
 
+            // --- ФОН секции 'Partners' (на главной)
             array(
                 'name' => esc_html__('Partners Box Background','gardener'),
                 'desc' => esc_html__('Upload here a background image. Recommended size: 1920-713px','gardener'),
@@ -442,8 +462,10 @@ function ale_metaboxes($meta_boxes) {
     );
 
 
+    // ### ABOUT ###
+    // --- РАЗДЕЛ 'About Page Settings'
     $meta_boxes[] = array(
-        'id'         => 'about_settings_metabox',
+        'id'         => 'about_settings_metabox', // ID раздела метабоксов
         'title'      => esc_html__('About Page Settings','gardener'),
         'pages'      => array( 'page', ), // Post type
         'context'    => 'normal',
@@ -452,6 +474,7 @@ function ale_metaboxes($meta_boxes) {
         'show_names' => true, // Show field names on the left
         'fields' => array(
 
+            // --- СЕКЦИЯ 'Additional Info', страницы 'ABOUT' ('template-about.php')
             array(
                 'name' => esc_html__('Enable Additional Info Box','gardener'),
                 'desc' => esc_html__('Enable or disable the additional info box','gardener'),
@@ -463,6 +486,8 @@ function ale_metaboxes($meta_boxes) {
                     array( 'name' => esc_html__('Disable','gardener'), 'value' => 'disable', ),
                 ),
             ),
+
+            // --- СЕКЦИЯ 'Skills Box', страницы 'ABOUT' ('template-about.php')
             array(
                 'name' => esc_html__('Enable Skills Box','gardener'),
                 'desc' => esc_html__('Enable or disable the skills box','gardener'),
@@ -474,6 +499,8 @@ function ale_metaboxes($meta_boxes) {
                     array( 'name' => esc_html__('Disable','gardener'), 'value' => 'disable', ),
                 ),
             ),
+
+            // --- СЕКЦИЯ 'Video', страницы 'ABOUT' ('template-about.php')
             array(
                 'name' => esc_html__('Enable Video & Partners Box','gardener'),
                 'desc' => esc_html__('Enable or disable the video/partners box','gardener'),
@@ -486,6 +513,7 @@ function ale_metaboxes($meta_boxes) {
                 ),
             ),
 
+            // --- ЗАГОЛОВОК секции '' ('template-about.php')
             array(
                 'name' => esc_html__('Partners Title','gardener'),
                 'desc' => esc_html__('Type here the custom title for your partners title.','gardener'),
@@ -496,9 +524,9 @@ function ale_metaboxes($meta_boxes) {
         )
     );
 
-
+    // --- РАЗДЕЛ 'Author Settings'
     $meta_boxes[] = array(
-        'id'         => 'about_author_metabox',
+        'id'         => 'about_author_metabox', // ID раздела метабоксов
         'title'      => esc_html__('Author Settings','gardener'),
         'pages'      => array( 'page', ), // Post type
         'context'    => 'normal',
@@ -507,6 +535,7 @@ function ale_metaboxes($meta_boxes) {
         'show_names' => true, // Show field names on the left
         'fields' => array(
 
+            // --- ПОДЗАГОЛОВОК секции '' ('template-about.php')
             array(
                 'name' => esc_html__('Subtitle Title','gardener'),
                 'desc' => esc_html__('Type here the subtitle.','gardener'),
@@ -515,6 +544,7 @@ function ale_metaboxes($meta_boxes) {
                 'type'    => 'text',
             ),
 
+            // --- ФОТО Автора-владельца
             array(
                 'name' => esc_html__('Author Photo','gardener'),
                 'desc' => esc_html__('Upload a photo. Recommended size 371px-416px','gardener'),
@@ -522,6 +552,8 @@ function ale_metaboxes($meta_boxes) {
                 'std'  => '',
                 'type'    => 'file',
             ),
+
+            // ---
             array(
                 'name' => esc_html__('Author Name','gardener'),
                 'desc' => esc_html__('Type here the author name','gardener'),
@@ -530,6 +562,7 @@ function ale_metaboxes($meta_boxes) {
                 'type'    => 'text',
             ),
 
+            // ---
             array(
                 'name' => esc_html__('Author Position','gardener'),
                 'desc' => esc_html__('Type here the position','gardener'),
@@ -540,6 +573,7 @@ function ale_metaboxes($meta_boxes) {
         )
     );
 
+    // --- РАЗДЕЛ 'Additional Info Settings'
     $meta_boxes[] = array(
         'id'         => 'about_add_settings_metabox',
         'title'      => esc_html__('Additional Info Settings','gardener'),
@@ -550,6 +584,7 @@ function ale_metaboxes($meta_boxes) {
         'show_names' => true, // Show field names on the left
         'fields' => array(
 
+            // --- ЗАГОЛОВОК
             array(
                 'name' => esc_html__('Container Title','gardener'),
                 'desc' => esc_html__('Type here the title.','gardener'),
@@ -558,6 +593,7 @@ function ale_metaboxes($meta_boxes) {
                 'type'    => 'text',
             ),
 
+            // --- ФОТО №1
             array(
                 'name' => esc_html__('Photo #1','gardener'),
                 'desc' => esc_html__('Upload a photo #1. Recommended size 550-340px','gardener'),
@@ -565,6 +601,8 @@ function ale_metaboxes($meta_boxes) {
                 'std'  => '',
                 'type'    => 'file',
             ),
+
+            // --- ФОТО №2
             array(
                 'name' => esc_html__('Photo #2','gardener'),
                 'desc' => esc_html__('Upload a photo #2. Recommended size 429-377px','gardener'),
@@ -573,18 +611,18 @@ function ale_metaboxes($meta_boxes) {
                 'type'    => 'file',
             ),
 
+            // --- поле (редактор wysiwyg) 'Info Description'
             array(
                 'name' => esc_html__('Info Description','gardener'),
                 'desc' => esc_html__('Type here the description.','gardener'),
                 'id'   => $prefix . 'info_description',
                 'std'  => '',
-                'type'    => 'wysiwyg',
+                'type'    => 'wysiwyg', // редактор!
             ),
         )
     );
 
-
-
+    // --- РАЗДЕЛ 'Skills Settings' (3и колонки - иконка фоном, заголовок,текст. 3раза)
     $meta_boxes[] = array(
         'id'         => 'about_skills_settings_metabox',
         'title'      => esc_html__('Skills Settings','gardener'),
@@ -594,6 +632,7 @@ function ale_metaboxes($meta_boxes) {
         'show_on'    => array( 'key' => 'page-template', 'value' => array('template-about.php'), ), // Specific post templates to display this metabox
         'show_names' => true, // Show field names on the left
         'fields' => array(
+            // ---
             array(
                 'name' => esc_html__('Icon #1','gardener'),
                 'desc' => esc_html__('Upload a photo #1.','gardener'),
@@ -601,6 +640,7 @@ function ale_metaboxes($meta_boxes) {
                 'std'  => '',
                 'type'    => 'file',
             ),
+            // ---
             array(
                 'name' => esc_html__('Title #1','gardener'),
                 'desc' => esc_html__('Type here the title #1.','gardener'),
@@ -608,6 +648,7 @@ function ale_metaboxes($meta_boxes) {
                 'std'  => '',
                 'type'    => 'text',
             ),
+            // ---
             array(
                 'name' => esc_html__('Description #1','gardener'),
                 'desc' => esc_html__('Type here the description #1.','gardener'),
@@ -615,7 +656,7 @@ function ale_metaboxes($meta_boxes) {
                 'std'  => '',
                 'type'    => 'textarea',
             ),
-
+            // ---
             array(
                 'name' => esc_html__('Icon #2','gardener'),
                 'desc' => esc_html__('Upload a photo #2.','gardener'),
@@ -623,6 +664,7 @@ function ale_metaboxes($meta_boxes) {
                 'std'  => '',
                 'type'    => 'file',
             ),
+            // ---
             array(
                 'name' => esc_html__('Title #2','gardener'),
                 'desc' => esc_html__('Type here the title #2.','gardener'),
@@ -630,6 +672,7 @@ function ale_metaboxes($meta_boxes) {
                 'std'  => '',
                 'type'    => 'text',
             ),
+            // ---
             array(
                 'name' => esc_html__('Description #2','gardener'),
                 'desc' => esc_html__('Type here the description #2.','gardener'),
@@ -637,7 +680,7 @@ function ale_metaboxes($meta_boxes) {
                 'std'  => '',
                 'type'    => 'textarea',
             ),
-
+            // ---
             array(
                 'name' => esc_html__('Icon #3','gardener'),
                 'desc' => esc_html__('Upload a photo #3.','gardener'),
@@ -645,6 +688,7 @@ function ale_metaboxes($meta_boxes) {
                 'std'  => '',
                 'type'    => 'file',
             ),
+            // ---
             array(
                 'name' => esc_html__('Title #3','gardener'),
                 'desc' => esc_html__('Type here the title #3.','gardener'),
@@ -652,6 +696,7 @@ function ale_metaboxes($meta_boxes) {
                 'std'  => '',
                 'type'    => 'text',
             ),
+            // ---
             array(
                 'name' => esc_html__('Description #3','gardener'),
                 'desc' => esc_html__('Type here the description #3.','gardener'),
@@ -660,10 +705,10 @@ function ale_metaboxes($meta_boxes) {
                 'type'    => 'textarea',
             ),
 
-
         )
     );
 
+    // --- РАЗДЕЛ 'Video Settings'
     $meta_boxes[] = array(
         'id'         => 'about_video_settings_metabox',
         'title'      => esc_html__('Video Settings','gardener'),
@@ -673,6 +718,7 @@ function ale_metaboxes($meta_boxes) {
         'show_on'    => array( 'key' => 'page-template', 'value' => array('template-about.php'), ), // Specific post templates to display this metabox
         'show_names' => true, // Show field names on the left
         'fields' => array(
+            // ---
             array(
                 'name' => esc_html__('Video Photo','gardener'),
                 'desc' => esc_html__('Upload a photo','gardener'),
@@ -680,6 +726,7 @@ function ale_metaboxes($meta_boxes) {
                 'std'  => '',
                 'type'    => 'file',
             ),
+            // ---
             array(
                 'name' => esc_html__('Video Link','gardener'),
                 'desc' => esc_html__('Type here the link.','gardener'),
@@ -687,6 +734,7 @@ function ale_metaboxes($meta_boxes) {
                 'std'  => '',
                 'type'    => 'text',
             ),
+            // ---
             array(
                 'name' => esc_html__('Title','gardener'),
                 'desc' => esc_html__('Type here the title.','gardener'),
@@ -694,6 +742,7 @@ function ale_metaboxes($meta_boxes) {
                 'std'  => '',
                 'type'    => 'text',
             ),
+            // ---
             array(
                 'name' => esc_html__('Description','gardener'),
                 'desc' => esc_html__('Type here the description.','gardener'),
@@ -705,6 +754,9 @@ function ale_metaboxes($meta_boxes) {
         )
     );
 
+
+    // ### CONTACT ###
+    // --- РАЗДЕЛ 'Contact Settings'
     $meta_boxes[] = array(
         'id'         => 'contact_settings_metabox',
         'title'      => esc_html__('Contact Settings','gardener'),
@@ -714,6 +766,7 @@ function ale_metaboxes($meta_boxes) {
         'show_on'    => array( 'key' => 'page-template', 'value' => array('template-contact.php'), ), // Specific post templates to display this metabox
         'show_names' => true, // Show field names on the left
         'fields' => array(
+            // ---
             array(
                 'name' => esc_html__('Phone Label','gardener'),
                 'desc' => esc_html__('Insert here the phone label','gardener'),
@@ -721,6 +774,7 @@ function ale_metaboxes($meta_boxes) {
                 'std'  => 'Phone',
                 'type'    => 'text',
             ),
+            // ---
             array(
                 'name' => esc_html__('Phone Number','gardener'),
                 'desc' => esc_html__('Insert here the phone number','gardener'),
@@ -728,6 +782,7 @@ function ale_metaboxes($meta_boxes) {
                 'std'  => '',
                 'type'    => 'text',
             ),
+            // ---
             array(
                 'name' => esc_html__('Email Label','gardener'),
                 'desc' => esc_html__('Insert here the email label','gardener'),
@@ -735,6 +790,7 @@ function ale_metaboxes($meta_boxes) {
                 'std'  => 'Email',
                 'type'    => 'text',
             ),
+            // ---
             array(
                 'name' => esc_html__('Your Email','gardener'),
                 'desc' => esc_html__('Insert here the email','gardener'),
@@ -742,6 +798,7 @@ function ale_metaboxes($meta_boxes) {
                 'std'  => '',
                 'type'    => 'text',
             ),
+            // ---
             array(
                 'name' => esc_html__('Address Label','gardener'),
                 'desc' => esc_html__('Insert here the address label','gardener'),
@@ -749,6 +806,7 @@ function ale_metaboxes($meta_boxes) {
                 'std'  => 'Address',
                 'type'    => 'text',
             ),
+            // ---
             array(
                 'name' => esc_html__('Your Address','gardener'),
                 'desc' => esc_html__('Insert here the address','gardener'),
@@ -756,8 +814,7 @@ function ale_metaboxes($meta_boxes) {
                 'std'  => '',
                 'type'    => 'text',
             ),
-
-
+            // ---
             array(
                 'name' => esc_html__('Contact Form Title','gardener'),
                 'desc' => esc_html__('Insert here the title','gardener'),
@@ -765,6 +822,7 @@ function ale_metaboxes($meta_boxes) {
                 'std'  => 'Contact form',
                 'type'    => 'text',
             ),
+            // ---
             array(
                 'name' => esc_html__('Contact Form Description','gardener'),
                 'desc' => esc_html__('Insert here the description','gardener'),
@@ -1145,7 +1203,7 @@ function ale_metaboxes($meta_boxes) {
 }
 
 /**
- * Get image sizes for images
+ * ##### РАЗМЕР КАРТИНОК / Get image sizes for images #####
  * 
  * @return array
  */
@@ -1267,7 +1325,7 @@ function ale_get_images_sizes() {
 }
 
 /**
- * Add post formats that are used in theme
+ *  ##### ФОРМАТ ПОСТА / Add post formats that are used in theme #####
  * 
  * @return array
  */
@@ -1276,7 +1334,7 @@ function ale_get_post_formats() {
 }
 
 /**
- * Get sidebars list
+ * ##### РЕГИСТРАЦИЯ САЙДБАРА / Get sidebars list #####
  * 
  * @return array
  */
@@ -1286,7 +1344,7 @@ function ale_get_sidebars() {
 }
 
 /**
- * Post types where metaboxes should show
+ * ##### ГДЕ ПОКАЗЫВАТЬ МЕТАБОКС ГАЛЕРЕЮ / Post types where metaboxes should show #####
  * 
  * @return array
  */
@@ -1295,7 +1353,7 @@ function ale_get_post_types_with_gallery() {
 }
 
 /**
- * Add custom fields for media attachments
+ * ##### ДОПОЛНИТЕЛЬНЫЕ ПОЛЯ ДЛЯ МЕДИА ФАЙЛОВ (свойства медиа) / Add custom fields for media attachments #####
  * @return array
  */
 function ale_media_custom_fields() {
